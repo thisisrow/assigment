@@ -40,7 +40,7 @@ router.post('/', auth, async (req, res) => {
     });
 
     await appointment.save();
-    res.status(201).json(appointment);
+    res.status(200).json(appointment);
   } catch (error) {
     console.error('Error booking appointment:', error);
     res.status(500).json({ message: 'Something went wrong. Please try again.' });
