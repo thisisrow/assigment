@@ -1,10 +1,10 @@
-const mongoose= resquire('mongoose');
+const mongoose = require('mongoose');
 
-const userSechema = new mongoose.Sechema({
-    name :{type:String ,required:true,},
-    email:{type:String ,required:true,unique:true},
-    role:{type:String, enum:['student','professor'],required:true,default:'student'},
-    passwordHash:{type:String,required:true}
-},{timeStamps:true}); 
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  role: { type: String, enum: ['student', 'professor'], required: true },
+  passwordHash: { type: String }
+}, { timestamps: true });
 
-module.exports= mongoose.model('User',userSechema)
+module.exports = mongoose.model('User', userSchema);

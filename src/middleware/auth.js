@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../config');
 const User = require('../models/User');
 
 async function auth(req, res, next) {
@@ -10,7 +9,7 @@ async function auth(req, res, next) {
   const token = authHeader.replace('Bearer ', '');
   
   try {
-    const payload = jwt.verify(token, JWT_SECRET);
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(payload.id);
   
     if (!user) return res.status(401).json({ message: 'Invalid token' });
